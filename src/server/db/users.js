@@ -2,14 +2,14 @@ const db = require('./client')
 const bcrypt = require('bcrypt');
 const SALT_COUNT = 10;
 
-const createUser = async({ name='first last', email, password, isAdministrator, token }) => {
+const createUser = async({ email, password, firstName, lastName, address, isAdministrator }) => {
     const hashedPassword = await bcrypt.hash(password, SALT_COUNT);
     try {
         const { rows: [ users ] } = await db.query(`
-        INSERT INTO users(name, email, password, "isAdministrator", token)
-        VALUES($1, $2, $3, $4, $5)
+        INSERT INTO users(email, password, "firstName", "lastName", address, "isAdministrator")
+        VALUES($1, $2, $3, $4, $5, $6)
         ON CONFLICT (email) DO NOTHING
-        RETURNING *`, [name, email, hashedPassword, isAdministrator, token]);
+        RETURNING *`, [email, hashedPassword, firstName, lastName, address, isAdministrator]);
 
         return users;
     } catch (err) {
@@ -36,14 +36,15 @@ const getAllUserAdmins = async() => {
 
 const getAllUsers = async() => {
     try {
-        const { rows: [ users ] } = await db.query(`
+        const { rows: users } = await db.query(`
         SELECT * 
-        FROM users`, []);
+        FROM users`);
 
         if(!users) {
             console.error("No Users")
             return;
         }
+        console.log(users);
         return users;
     } catch (err) {
         throw err;
@@ -55,7 +56,7 @@ const getUserById = async(id) => {
         const { rows: [ users ] } = await db.query(`
         SELECT * 
         FROM users
-        WHERE name=$1;`, [ id ]);
+        WHERE id=$1;`, [ id ]);
 
         if(!users) {
             console.error("No Users");

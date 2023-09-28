@@ -1,6 +1,5 @@
 const db = require('./client');
 const { createUser } = require('./users');
-const { createAdministrator } = require('./administrators')
 const { createProduct } = require('./products');
 const { createOrder } = require('./orders')
 const { createCart } = require('./cart')
@@ -8,29 +7,34 @@ const { createReview } = require('./reviews')
 
 const users = [
   {
-    name: 'Emily Johnson',
-    email: 'emily@example.com',
-    password: 'securepass',
-  },
-  {
-    name: 'Liu Wei',
+    firstName: 'Liu',
+    lastName: "Wei",
     email: 'liu@example.com',
-    password: 'strongpass',
+    password: 'strongpass'
   },
   {
-    name: 'Isabella García',
+    firstName: 'Emily',
+    lastName: "Johnson",
+    email: 'emily@example.com',
+    password: 'securepass'
+  },
+  {
+    firstName: 'Isabella',
+    lastName: "Garcia",
     email: 'bella@example.com',
-    password: 'pass1234',
+    password: 'pass1234'
   },
   {
-    name: 'Mohammed Ahmed',
+    firstName: 'Mohammed',
+    lastName: "Ahmed",
     email: 'mohammed@example.com',
-    password: 'mysecretpassword',
+    password: 'mysecretpassword'
   },
   {
-    name: 'John Smith',
+    firstName: 'John',
+    lastName: "Smith",
     email: 'john@example.com',
-    password: 'password123',
+    password: 'password123'
   },
   // Add more user objects as needed
 ];  
@@ -105,11 +109,12 @@ const createTables = async () => {
         await db.query(`
         CREATE TABLE users(
             id SERIAL PRIMARY KEY,
-            name VARCHAR(255) DEFAULT 'name',
             email VARCHAR(255) UNIQUE NOT NULL,
             password VARCHAR(255) NOT NULL,
-            "isAdministrator" BOOLEAN DEFAULT false,
-            token VARCHAR(255)
+            address VARCHAR (255),
+            "firstName" VARCHAR(255),
+            "lastName" VARCHAR(255),
+            "isAdministrator" BOOLEAN DEFAULT false
         );
 
         CREATE TABLE products(
@@ -158,8 +163,11 @@ const createTables = async () => {
 
 const insertUsers = async () => {
   try {
-    for (const user of users) {
-      await createUser({name: user.name, email: user.email, password: user.password, adminToken: user.adminToken});
+    for (let user of users) {
+      await createUser({ firstName: user.firstName, 
+                         lastName: user.lastName, 
+                         email: user.email, 
+                         password: user.password });
     }
     console.log('Seed user data inserted successfully.');
   } catch (error) {

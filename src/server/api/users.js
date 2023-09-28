@@ -3,6 +3,7 @@ const usersRouter = express.Router();
 
 const { requireUser } = require('./utils')
 const {
+    getAllUsers,
     createUser,
     getUserById,
     getUserByEmail,
@@ -23,6 +24,30 @@ usersRouter.get('/', async( req, res, next) => {
     }
 });
 
+usersRouter.get('/:userId', async( req, res, next) => {
+    try {
+        const { userId } = req.params;
+        const user = await getUserById(userId);
+        res.send({
+            user
+        });
+    } catch ({name, message}) {
+        next({name, message})
+    }
+});
+
+usersRouter.get('/:email', async( req, res, next) => {
+    try {
+        const { email } = req.params;
+        const user = await getUserByEmail(email);
+        res.send({
+            user
+        });
+    } catch ({name, message}) {
+        next({name, message})
+    }
+});
+
 usersRouter.post('/login', async(req, res, next) => {
     const { email, password } = req.body;
     if(!email || !password) {
@@ -32,7 +57,7 @@ usersRouter.post('/login', async(req, res, next) => {
         });
     }
     try {
-        const user = await getUserById({email, password});
+        const user = await getUserByEmail(email);
         if(user) {
             const token = jwt.sign({
                 id: user.id,
@@ -58,7 +83,7 @@ usersRouter.post('/login', async(req, res, next) => {
 });
 
 usersRouter.post('/register', async(req, res, next) => {
-    const { name, email, password } = req.body;
+    const { email, password, firstName, lastName, address, isAdministrator } = req.body;
 
     try {
         const _user = await getUserByEmail(email);
@@ -69,13 +94,16 @@ usersRouter.post('/register', async(req, res, next) => {
                 message: 'A user with that email already exists'
             });
         }
-
+        
         const user = await createUser({
-            name,
             email,
-            password
+            password,
+            firstName,
+            lastName,
+            address,
+            isAdministrator
         });
-
+        
         const token = jwt.sign({
             id: user.id,
             email

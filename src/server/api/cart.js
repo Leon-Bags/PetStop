@@ -1,8 +1,7 @@
 const express = require('express');
 const app = express();
 
-
-const cartRouter= require('./'); // Replace with the actual path to your cart API module
+const cartRouter = express.Router();
 
 const { requireUser } = require('./utils')
 const { createCart,
