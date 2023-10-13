@@ -11,14 +11,16 @@ const Login = ({ setToken, token, setCart, setUserId }) => {
   const navigate = useNavigate()
 
   const handleEmailChange = (e) => {
+    e.preventDefault();
     setEmail(e.target.value);
   };
 
   const handlePasswordChange = (e) => {
+    e.preventDefault();
     setPassword(e.target.value);
   };
 
-  const _login = async(e) => {
+  const _login = async() => {
     try {
         const result = await login(email, password);
 
