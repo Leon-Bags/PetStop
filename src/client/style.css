@@ -29,8 +29,9 @@
 /* Homepage.css */
 
 .welcome-page {
+  margin-top: 35px;
+  margin-right: 10px;
   text-align: center;
-  padding: 20px;
   background-color: #f4f4f4;
   background: url(https://www.classiedawggrooming.com/wp-content/uploads/sites/124/2017/03/pets-banner.png);
   background-size: cover;
@@ -642,17 +643,20 @@
 /* Single Product */
 .single-product-div {
   display: flex;
-  border: 2px solid lightskyblue;
 }
 
-.single-product-info-div,
+.single-product-info-div {
+  flex: 2;
+  margin-left: 20px;
+  margin-top: 60px;
+}
 .single-product-img-div {
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 2px solid lightskyblue;
+  border: 3px solid grey
 }
 
 .single-product-img-div {
@@ -661,8 +665,10 @@
 }
 
 .single-product-image-sizing {
+  flex: 1;
   margin-top: 30px;
-  height: 500px;
+  height: 200px;
+  object-fit: scale-down;
 }
 
 .single-product-info {
@@ -690,6 +696,15 @@
   color: white;
   background-color: darkblue;
   cursor: pointer;
+}
+
+.product-review-info {
+  background-color: rgb(251, 244, 235);
+  padding: 20px;
+}
+
+.line-break {
+  border-bottom: solid #333;
 }
 
 /* Admin Register */
@@ -870,8 +885,6 @@
   background-size: cover;
 }
 
-.register-label {}
-
 .register-input {
   width: 300px;
   margin-top: 5px;
@@ -909,8 +922,6 @@
   background: url(https://images.unsplash.com/photo-1560114928-40f1f1eb26a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y3V0ZSUyMGFuaW1hbHxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80);
   background-size: cover;
 }
-
-.login-body {}
 
 .login-input {
   width: 300px;
@@ -967,7 +978,3 @@
   background-color: #07a0a0;
   cursor: pointer;
 }
-
-.cart_img {}
-
-.cart-img {}

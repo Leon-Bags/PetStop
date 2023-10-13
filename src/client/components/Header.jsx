@@ -56,7 +56,7 @@ function Header({ token }) {
                     </li>
                     <li className="nav-list">
                         {token ? null : <Link to="/register">
-                            <FontAwesomeIcon icon={faNewspaper} /> Register
+                            <FontAwesomeIcon icon={faNewspaper} /> Sign-Up
                         </Link>}
                     </li>
                     <li className="nav-list">

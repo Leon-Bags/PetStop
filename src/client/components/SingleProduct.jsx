@@ -137,7 +137,7 @@ const SingleProduct = ({ products , reviews, token, addToCart }) => {
                 {products.filter(product => product.id === productIdNumberfy).map(filteredProduct => (
                     <div className="single-product-div">
                         <div className="single-product-img-div" key={filteredProduct.id}>
-                            <img src={filteredProduct.imgUrl} height="300px" className="single-product-image-sizing"/>
+                            <img src={filteredProduct.imgUrl} className="single-product-image-sizing"/>
                         </div>
                         <div className="single-product-info-div">
                             <h3 className="single-product-name">{filteredProduct.name}</h3>
@@ -385,10 +385,11 @@ const SingleProduct = ({ products , reviews, token, addToCart }) => {
                 <h2>Product Reviews</h2>
 
                 {reviews.filter(review => review.productId === productIdNumberfy).map(filteredReview => (
-                        <div className="review-info" key={filteredReview.id}>
-                            <p>{filteredReview.title}</p>
-                            <h3>{filteredReview.content}</h3>
+                        <div className="product-review-info" key={filteredReview.id}>
+                            <h3>{filteredReview.title}</h3>
+                            <p>{filteredReview.content}</p>
                             <p>{filteredReview.date}</p>
+                            <div className="line-break"></div>
                         </div>
                     ))}
         </>

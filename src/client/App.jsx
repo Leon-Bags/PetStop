@@ -176,7 +176,7 @@ function App() {
         <Header token={token} />
 
         <Routes>
-          <Route path="/cart" element={<Cart cart={cart} setCart={setCart} token={token} userId={userId} andleAmountChange={handleAmountChange} />} />
+          <Route path="/cart" element={<Cart cart={cart} setCart={setCart} token={token} userId={userId} handleAmountChange={handleAmountChange} />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/" element={<Homepage products={products} setToken={setToken} token={token} />} />
 

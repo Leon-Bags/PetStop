@@ -56,7 +56,7 @@ const administrators = [
 const products = [
   {
     name: "dog toy 1",
-    description: "first toy",
+    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
     price: 7.99,
     quantity: 5,
     petType: "dog",
@@ -415,7 +415,7 @@ const products = [
     productType: "house",
     inStock: true,
     isPopular: false,
-    imgUrl: "https://image.chewy.com/is/image/catalog/734502_MAIN._AC_SS108_V1670536608_.jpg"
+    imgUrl: "https://cdn.media.amplience.net/s/hobbylobby/2202828-81078901-IMGSET"
   },
   {
     name: "dog house 3",
@@ -504,7 +504,7 @@ const products = [
     productType: "food",
     inStock: true,
     isPopular: true,
-    imgUrl: "https://image.chewy.com/is/image/catalog/76091_MAIN._AC_SL1500_V1683817870_.jpg"
+    imgUrl: "https://images.heb.com/is/image/HEBGrocery/prd-medium/000146801.jpg"
   },
   {
     name: "dog food 1",
@@ -658,7 +658,7 @@ const products = [
     productType: "bed",
     inStock: true,
     isPopular: true,
-    imgUrl: "https://assets.wfcdn.com/im/17894169/resize-h445%5Ecompr-r85/6184/61843397/Serta+Quilted+Couch+Pet+Bed.jpg"
+    imgUrl: "https://www.ikea.com/us/en/images/products/lurvig-dog-bed-light-gray__0782458_pe761331_s5.jpg?f=s"
   },
   {
     name: "dog food 2",
@@ -834,7 +834,7 @@ const products = [
     productType: "toy",
     inStock: true,
     isPopular: false,
-    imgUrl: "https://www.petplay.com/cdn/shop/products/P.L.A.Y._FF_Cat_HalloweenCat_Group_3_LowRes_720x.jpg?v=1678815459"
+    imgUrl: "https://images.squarespace-cdn.com/content/v1/5c6467680cf57d95a64743db/1618328087580-2643I1AGBEXTYW4FJB25/jingle_ball_cat_toy.jpg?format=1000w"
   },
   {
     name: "cat toy 3",
@@ -1065,7 +1065,7 @@ const products = [
     productType: "accessory",
     inStock: true,
     isPopular: false,
-    imgUrl: "https://sc01.alicdn.com/kf/UTB8Hxk2sHPJXKJkSafSq6yqUXXa8/926009970/UTB8Hxk2sHPJXKJkSafSq6yqUXXa8.jpg"
+    imgUrl: "https://imageservice.gloster.com/Render?model=15727&simple=&angle=34&bgcolor=transparent&format=webp"
   },
   {
     name: "bird accessory 4",
@@ -1153,7 +1153,7 @@ const products = [
     productType: "tank",
     inStock: true,
     isPopular: false,
-    imgUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1zjijWV8kanhQYFUVmLc9I5MJoycyDc9Z3Q&usqp=CAU"
+    imgUrl: "https://www.junglebobsreptileworld.com/cdn/shop/products/tetrafauna-deluxe-slide-door-terrarium-75-gallon-48x18x21supplies---terrariumsjungle-bobs-reptile-world-31077174_1af0b93f-976a-46a2-b376-b21d9c2e82e5_512x512.png?v=1652842840"
   },
   {
     name: "reptile tank 4",
@@ -1197,7 +1197,7 @@ const products = [
     productType: "accessory",
     inStock: true,
     isPopular: false,
-    imgUrl: "https://carolinadesignerdragons.com/wp-content/uploads/2018/11/718I2tgiReL._SL1500_-1.jpg"
+    imgUrl: "https://youronlinepetstore.com.au/cdn/shop/collections/reptile-hides-and-bowls-your-online-pet-store_a5284f6d-a22c-497b-bcca-af3eef7959ab.png?v=16898060805"
   },
   {
     name: "reptile accessory 4",
