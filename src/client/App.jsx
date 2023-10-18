@@ -176,7 +176,11 @@ function App() {
         <Header token={token} />
 
         <Routes>
-          <Route path="/cart" element={<Cart cart={cart} setCart={setCart} token={token} userId={userId} handleAmountChange={handleAmountChange} />} />
+          <Route path="/cart" element={<Cart cart={cart} 
+                                             setCart={setCart} 
+                                             token={token} 
+                                             userId={userId} 
+                                             handleAmountChange={handleAmountChange} />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/" element={<Homepage products={products} setToken={setToken} token={token} />} />
 
@@ -193,10 +197,11 @@ function App() {
                                                             token={token}/>} />
           <Route path="/products/id/:productId" element={<SingleProduct reviews={reviews}
                                                                         products={products}
+                                                                        setProducts={setProducts}
                                                                         setToken={setToken} 
                                                                         token={token}
                                                                         addToCart={addToCart}/>} />
-          <Route path="/addproduct" element={<AddProduct />} />
+          <Route path="/addproduct" element={<AddProduct setProducts={setProducts} />} />
           <Route path="/register" element={<Register setToken={setToken} 
                                                      token={token} 
                                                      setUserId={setUserId} 

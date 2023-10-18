@@ -32,11 +32,13 @@ const ProductListing = ({ products, addToCart, token }) => {
     const navigate = useNavigate()
   
     const handlePetType = (e) => {
+        e.prevendDefault();
         const value = e.target.value;
         setPetType(value);
     }
 
     const handleProductType = (e) => {
+        e.prevendDefault();
         const value = e.target.value
         setProductType(value);
     }
@@ -198,6 +200,7 @@ const ProductListing = ({ products, addToCart, token }) => {
   // Function to handle sorting change
 
     const handleSortChange = (e) => {
+        e.prevendDefault();
         const selectedValue = e.target.value;
         const [newSortBy, newAscending] = selectedValue.split('-');
 
@@ -438,7 +441,7 @@ const ProductListing = ({ products, addToCart, token }) => {
 
 
                 {petType === '' && productType === '' ? sortedProducts.map((product) => (
-                    <div>
+                    <div className='product-info-container' key={product.id}>
                         <div className='product-info' onClick={() => {navigate(`/products/id/${product.id}`)}}> 
                             <img src={product.imgUrl} className="product-image-sizing"/>
                             <h3>{product.name}</h3>

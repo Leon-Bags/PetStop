@@ -2,11 +2,11 @@ import React from 'react'
 import { useState , useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { fetchUsersById } from '../api/UsersAjaxHelper';
-import { deleteProduct } from '../api/ProductsAjaxHelper';
+import fetchProducts, { deleteProduct } from '../api/ProductsAjaxHelper';
 import postReview from '../api/ReviewsAjaxHelper';
 import { updateProduct } from '../api/ProductsAjaxHelper';
 
-const SingleProduct = ({ products , reviews, token, addToCart }) => {
+const SingleProduct = ({ products, setProducts , reviews, token, addToCart }) => {
 
     const { productId } = useParams();
 
@@ -53,14 +53,21 @@ const SingleProduct = ({ products , reviews, token, addToCart }) => {
         null
     }
 
-    const deleteProductById = async () => {
+    const deleteProductById = async (e) => {
+        e.preventDefault();
             try {
                 const response = await deleteProduct(productId)
                 console.log(response)
+                refetchProductListing();
                 navigate("/products")
             } catch (err) {
                 console.error(err)
             }
+        }
+
+        const refetchProductListing = async () => {
+            const proudcts = await fetchProducts();
+            setProducts(proudcts);
         }
 
         useEffect(() => {
@@ -120,11 +127,11 @@ const SingleProduct = ({ products , reviews, token, addToCart }) => {
     
         }
 
-    console.log(userId)
+    // console.log(userId)
 
-    console.log(productIdNumberfy)
+    // console.log(productIdNumberfy)
 
-    console.log(products)
+    // console.log(products)
 
     // useEffect(() => {
     //     const product = products.find((product) => product.id === productIdNumberfy)
@@ -135,7 +142,7 @@ const SingleProduct = ({ products , reviews, token, addToCart }) => {
     return (
         <>
                 {products.filter(product => product.id === productIdNumberfy).map(filteredProduct => (
-                    <div className="single-product-div">
+                    <div className="single-product-div" key={filteredProduct.id}>
                         <div className="single-product-img-div" key={filteredProduct.id}>
                             <img src={filteredProduct.imgUrl} className="single-product-image-sizing"/>
                         </div>
@@ -155,7 +162,7 @@ const SingleProduct = ({ products , reviews, token, addToCart }) => {
             {adminUser.isAdministrator ?
             <div>
                 <button className="product-update-button" onClick={() => {setStateHandler(true)}}>Update</button>
-                <button className="product-delete-button" onClick={deleteProductById} >Delete</button>
+                <button className="product-delete-button" onClick={(e) => {deleteProductById(e)}} >Delete</button>
             </div> : null }
 
             {stateHandler === true ?

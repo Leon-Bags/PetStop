@@ -1,9 +1,9 @@
 import { useState , useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { createProduct } from '../api/ProductsAjaxHelper';
+import fetchProducts, { createProduct } from '../api/ProductsAjaxHelper';
 import { fetchUsersById } from '../api/UsersAjaxHelper';
 
-const AddProduct = () => {
+const AddProduct = ({ setProducts }) => {
 
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
@@ -59,12 +59,17 @@ const AddProduct = () => {
             try{
             const response = await createProduct(product);
                 console.log(response)
+                await refetchProductListing();
                 alert("Product added!")
                 navigate("/products")
             } catch(error) {
                 console.log(error)
             }
         }
+    const refetchProductListing = async () => {
+        const proudcts = await fetchProducts();
+        setProducts(proudcts);
+    }
 
     return (
         <div className="form">
