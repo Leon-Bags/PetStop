@@ -25,7 +25,6 @@ export default function Homepage({ products, token }) {
                     <div onClick={() => { navigate(`/products/id/${filteredProduct.id}`) }} className="product-info" key={filteredProduct.id}>
                         <img src={filteredProduct.imgUrl} className="product-image-sizing" />
                         <h3>{filteredProduct.name}</h3>
-                        <p>{filteredProduct.petType}</p>
                         <p>Price: ${filteredProduct.price}</p>
                     </div>
                 ))}
